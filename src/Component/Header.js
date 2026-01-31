@@ -1,21 +1,27 @@
 import React from 'react';
 import { ShoppingCart } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../Context/CartContext';
 
 const Header = () => {
-  return (
-    <header className="bg-white shadow-md">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        {/* Left Side: Title */}
-        <Link to="/" className="text-xl font-bold text-gray-800 hover:text-blue-600 transition-colors">
-          Dump Online Shop
-        </Link>
+  const { cartCount } = useCart();
 
-        {/* Right Side: Cart Icon */}
-        <Link to="/carts" className="relative p-2 text-gray-600 hover:text-blue-600 transition-colors">
-          <ShoppingCart size={24} />
-          {/* Optional: Add a badge count if needed later */}
-          {/* <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">3</span> */}
+  return (
+    <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-100">
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        <Link to="/" className="text-2xl font-black text-gray-900 tracking-tight hover:text-blue-600 transition-colors">
+          DumpStore.
+        </Link>
+        
+        <Link to="/carts" className="relative group p-2">
+            <div className="bg-gray-100 group-hover:bg-blue-50 p-2 rounded-full transition-colors">
+                 <ShoppingCart size={24} className="text-gray-700 group-hover:text-blue-600" />
+            </div>
+            {cartCount > 0 && (
+                <span className="absolute top-0 right-0 inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full ring-2 ring-white">
+                    {cartCount}
+                </span>
+            )}
         </Link>
       </div>
     </header>

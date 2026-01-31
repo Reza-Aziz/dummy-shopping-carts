@@ -2,48 +2,42 @@ import React, { useState } from 'react';
 import Header from '../Component/Header';
 import SearchBar from '../Component/SearchBar';
 import ProductList from '../Component/ProductList';
+import ProductDetailModal from '../Component/ProductDetailModal';
 
 const ShoppingCartsPages = () => {
-    // State to hold search query and filters
-    const [searchState, setSearchState] = useState({ 
-        query: '', 
-        filters: {} 
-    });
+    const [searchState, setSearchState] = useState({ query: '', filters: {}, sort: {} });
+    const [selectedProduct, setSelectedProduct] = useState(null);
 
-    const handleSearch = ({ query, filters }) => {
-        setSearchState({ query, filters });
+    const handleSearch = (params) => {
+        setSearchState(params);
     };
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-gray-50 pb-20">
             <Header />
             
-            <main className="container mx-auto px-4 py-8">
-                {/* Hero / Search Section */}
+            <main className="container mx-auto px-4 py-8 relative">
                 <div className="flex flex-col items-center justify-center mb-10 text-center">
-                    <h1 className="text-3xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight">
-                        Discover Amazing Products
+                    <h1 className="text-4xl font-black text-gray-900 mb-4">
+                         Shop 'Til You Drop
                     </h1>
-                    <p className="text-gray-500 mb-8 max-w-xl">
-                        Search for your favorite items using our smart filter system below.
-                    </p>
-                    
                     <SearchBar onSearch={handleSearch} />
                 </div>
 
-                {/* Product Section */}
-                <div>
-                     <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-xl font-bold text-gray-800">
-                            {searchState.query ? `Results for "${searchState.query}"` : 'Recommended For You'}
-                        </h2>
-                     </div>
-                     
-                     <ProductList 
-                        searchQuery={searchState.query} 
-                        filters={searchState.filters} 
-                     /> 
-                </div>
+                <ProductList 
+                    searchQuery={searchState.query} 
+                    filters={searchState.filters}
+                    sort={searchState.sort}
+                    onOpenModal={(product) => setSelectedProduct(product)}
+                />
+
+                {/* Modal Portal */}
+                {selectedProduct && (
+                    <ProductDetailModal 
+                        product={selectedProduct} 
+                        onClose={() => setSelectedProduct(null)} 
+                    />
+                )}
             </main>
         </div>
     );
