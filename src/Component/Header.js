@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { ShoppingCart } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useCart } from '../Context/CartContext';
 
 const Header = () => {
   const { cartCount } = useCart();
-  const location = useLocation();
 
   const [scrolled, setScrolled] = useState(false);
 
