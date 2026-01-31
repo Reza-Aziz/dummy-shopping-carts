@@ -2,6 +2,8 @@
 
 A simplified, premium, and modern shopping cart application built with React, Tailwind CSS, and Context API. This project demonstrates a clean UI/UX with essential e-commerce features using the DummyJSON API.
 
+**Vercel Deployment:** https://dummy-shopping-carts.vercel.app/
+
 ## 🚀 Features
 
 - **Product Catalog**: Browse products with beautiful card layouts and smooth animations.
