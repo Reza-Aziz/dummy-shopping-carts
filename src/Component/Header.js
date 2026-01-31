@@ -6,19 +6,41 @@ import { useCart } from '../Context/CartContext';
 const Header = () => {
   const { cartCount } = useCart();
 
-  const [scrolled, setScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  React.useEffect(() => {
-      const handleScroll = () => setScrolled(window.scrollY > 20);
+  useEffect(() => {
+      const handleScroll = () => {
+          const currentScrollY = window.scrollY;
+          
+          if (currentScrollY > 10) {
+              setIsScrolled(true);
+          } else {
+              setIsScrolled(false);
+          }
+
+          if (currentScrollY > lastScrollY && currentScrollY > 50) {
+              // Scrolling Down
+              setIsVisible(false);
+          } else {
+              // Scrolling Up
+              setIsVisible(true);
+          }
+
+          setLastScrollY(currentScrollY);
+      };
+
       window.addEventListener('scroll', handleScroll);
       return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   return (
     <header 
-        className={`sticky top-0 z-50 transition-all duration-300 border-b 
-        ${scrolled 
-            ? 'bg-white/80 backdrop-blur-xl border-indigo-100 shadow-sm py-3' 
+        className={`fixed top-0 w-full z-50 transition-all duration-300 transform 
+        ${isVisible ? 'translate-y-0' : '-translate-y-full'}
+        ${isScrolled 
+            ? 'bg-white/80 backdrop-blur-xl border-b border-indigo-50 shadow-sm py-3' 
             : 'bg-transparent border-transparent py-5'}`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
