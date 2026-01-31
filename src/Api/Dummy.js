@@ -39,4 +39,30 @@ export const getSingleProduct = async (id) => {
     }
 }
 
+// GET Categories
+export const getAllCategories = async () => {
+    try {
+        const response = await api.get('/products/categories');
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching categories:', error);
+        return [];
+    }
+}
+
+// GET Products by Category
+export const getProductsByCategory = async (category, limit = 9, skip = 0) => {
+    try {
+        const response = await api.get(`/products/category/${category}?limit=${limit}&skip=${skip}`);
+        return response.data;
+    } catch (error) {
+        console.error(`Error fetching category ${category}:`, error);
+        throw error;
+    }
+}
+
+// --- Cart API (Not used for Context, but kept for reference) ---
+export const getAllCarts = async () => { /* ... */ }; 
+// ... (Previous cart functions if needed, but we used Context)
+
 export default api;
