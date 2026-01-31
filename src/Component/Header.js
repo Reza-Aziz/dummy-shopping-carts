@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ShoppingCart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../Context/CartContext';
@@ -48,14 +48,14 @@ const Header = () => {
             <div className="w-8 h-8 bg-gradient-to-br from-indigo-600 to-violet-600 rounded-lg flex items-center justify-center text-white font-black text-lg shadow-lg shadow-indigo-200 group-hover:shadow-indigo-400 transition-all">
                 D
             </div>
-            <span className={`text-2xl font-black tracking-tight transition-colors ${scrolled ? 'text-gray-900' : 'text-gray-800'}`}>
+            <span className={`text-2xl font-black tracking-tight transition-colors ${isScrolled ? 'text-gray-900' : 'text-gray-800'}`}>
                 Dump<span className="text-indigo-600">Store.</span>
             </span>
         </Link>
         
         <Link to="/carts" className="relative group">
             <div className={`p-3 rounded-2xl transition-all duration-300
-                 ${scrolled 
+                 ${isScrolled 
                     ? 'bg-indigo-50 text-indigo-900 hover:bg-indigo-100' 
                     : 'bg-white/50 text-gray-800 hover:bg-white shadow-sm'}`}>
                  <ShoppingCart size={22} />
