@@ -14,22 +14,15 @@ const ProductList = ({ searchQuery, filters, sort, onOpenModal }) => {
   const LIMIT = 9;
 
   useEffect(() => {
-    // Reset page to 1 if search/filter changes (Optimization, though consumes effect dependency)
-    // We won't do it here to avoid loops, but parent usually handles this or we ignore.
-  }, [searchQuery, filters]);
-
-  useEffect(() => {
     const fetchProducts = async () => {
         setLoading(true);
         try {
             let data;
             const skip = (page - 1) * LIMIT;
             
-            // Simplified Logic: Mutually Exclusive
             if (searchQuery) {
                 const result = await searchProducts(searchQuery);
                 data = result.products;
-                // Client-side sort for search results (DummyJSON search sort support is limited)
                 setTotal(data.length);
             } else if (filters?.category) {
                 const result = await getProductsByCategory(filters.category, LIMIT, skip);
@@ -41,9 +34,7 @@ const ProductList = ({ searchQuery, filters, sort, onOpenModal }) => {
                 setTotal(result.total);
             }
 
-            // Client-side Filters
             if (filters) {
-                // Determine if we need to filter locally (mostly for price/discount)
                 if (filters.minPrice) data = data.filter(p => p.price >= Number(filters.minPrice));
                 if (filters.maxPrice) data = data.filter(p => p.price <= Number(filters.maxPrice));
                 if (filters.minDiscount) data = data.filter(p => p.discountPercentage >= Number(filters.minDiscount));
@@ -101,7 +92,6 @@ const ProductList = ({ searchQuery, filters, sort, onOpenModal }) => {
             ))}
         </div>
 
-        {/* Improved Pagination */}
         {totalPages > 1 && (
             <div className="flex justify-center items-center mt-20 gap-3">
                 <button

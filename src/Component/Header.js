@@ -6,11 +6,9 @@ import { useCart } from '../Context/CartContext';
 const Header = () => {
   const { cartCount } = useCart();
   const location = useLocation();
-  const isHome = location.pathname === '/';
 
   const [scrolled, setScrolled] = useState(false);
 
-  // Handle Scroll Effect
   React.useEffect(() => {
       const handleScroll = () => setScrolled(window.scrollY > 20);
       window.addEventListener('scroll', handleScroll);

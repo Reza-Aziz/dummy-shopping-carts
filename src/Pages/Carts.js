@@ -12,7 +12,6 @@ const Carts = () => {
       setTimeout(() => {
           clearCart();
           setCheckedOut(false);
-          // alert("Checkout Successful! Thank you for your purchase."); 
       }, 1500);
   };
 
@@ -42,7 +41,6 @@ const Carts = () => {
               </div>
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-                {/* Cart Items List */}
                 <div className="lg:col-span-2 space-y-6">
                     {cartItems.map((item) => (
                         <div key={item.id} className="bg-white p-6 rounded-3xl shadow-sm border border-gray-50 flex flex-col sm:flex-row gap-6 items-center hover:shadow-md transition-shadow">
@@ -85,7 +83,6 @@ const Carts = () => {
                     ))}
                 </div>
 
-                {/* Summary */}
                 <div className="lg:col-span-1">
                     <div className="bg-white p-8 rounded-3xl shadow-xl shadow-indigo-500/5 border border-indigo-50 sticky top-28">
                         <h3 className="text-xl font-black text-gray-900 mb-6">Order Summary</h3>

@@ -9,13 +9,11 @@ const ShoppingCartsPages = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
 
     const handleSearch = (params) => {
-         // Reset page to 1 when search changes? handled by ProductList usually via props change or Context
         setSearchState(params);
     };
 
     return (
         <div className="min-h-screen bg-[#F0F4FF] font-sans selection:bg-indigo-200 selection:text-indigo-900 overflow-x-hidden">
-            {/* Vibrant Background Mesh */}
             <div className="fixed inset-0 pointer-events-none z-0">
                 <div className="absolute top-[-10%] right-[-10%] w-[800px] h-[800px] bg-gradient-to-br from-purple-200/40 to-indigo-200/40 rounded-full blur-3xl opacity-60 mix-blend-multiply filter animate-pulse-slow"></div>
                 <div className="absolute bottom-[-10%] left-[-10%] w-[800px] h-[800px] bg-gradient-to-tr from-pink-200/40 to-blue-200/40 rounded-full blur-3xl opacity-60 mix-blend-multiply filter"></div>

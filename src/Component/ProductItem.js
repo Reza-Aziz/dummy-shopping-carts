@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { ShoppingCart, Eye } from 'lucide-react';
 import { useCart } from '../Context/CartContext';
 
-const ProductItem = ({ product, onOpenModal }) => {
+const ProductItem = memo(({ product, onOpenModal }) => {
   const { addToCart } = useCart();
 
   const handleAddToCart = (e) => {
@@ -19,7 +19,6 @@ const ProductItem = ({ product, onOpenModal }) => {
         className="relative w-full h-64 bg-gray-50 rounded-[1.5rem] overflow-hidden cursor-pointer mb-5" 
         onClick={() => onOpenModal(product)}
       >
-         {/* Gradient Overlay on Hover */}
          <div className="absolute inset-0 bg-indigo-900/0 group-hover:bg-indigo-900/5 transition-colors duration-300 z-10"></div>
          
          <img 
@@ -47,7 +46,6 @@ const ProductItem = ({ product, onOpenModal }) => {
                  <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-400 bg-indigo-50 px-2 py-0.5 rounded-md">
                      {product.category}
                  </span>
-                 {/* Stock Display Restored */}
                  <span className="text-[10px] font-bold uppercase tracking-wider text-green-600 bg-green-50 px-2 py-0.5 rounded-md">
                      Stock: {product.stock}
                  </span>
@@ -80,6 +78,6 @@ const ProductItem = ({ product, onOpenModal }) => {
       </div>
     </div>
   );
-};
+});
 
 export default ProductItem;

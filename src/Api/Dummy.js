@@ -4,7 +4,6 @@ const api = axios.create({
   baseURL: 'https://dummyjson.com',
 });
 
-// GET /products with Pagination & Sorting
 export const getAllProducts = async (limit = 9, skip = 0, sortBy = '', order = '') => {
   try {
     let url = `/products?limit=${limit}&skip=${skip}`;
@@ -39,7 +38,6 @@ export const getSingleProduct = async (id) => {
     }
 }
 
-// GET Categories
 export const getAllCategories = async () => {
     try {
         const response = await api.get('/products/categories');
@@ -50,7 +48,6 @@ export const getAllCategories = async () => {
     }
 }
 
-// GET Products by Category
 export const getProductsByCategory = async (category, limit = 9, skip = 0) => {
     try {
         const response = await api.get(`/products/category/${category}?limit=${limit}&skip=${skip}`);
@@ -61,8 +58,6 @@ export const getProductsByCategory = async (category, limit = 9, skip = 0) => {
     }
 }
 
-// --- Cart API (Not used for Context, but kept for reference) ---
-export const getAllCarts = async () => { /* ... */ }; 
-// ... (Previous cart functions if needed, but we used Context)
+export const getAllCarts = async () => { }; 
 
 export default api;

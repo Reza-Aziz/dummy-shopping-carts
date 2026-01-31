@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { X, ShoppingCart, Star, CheckCircle } from 'lucide-react';
 import { useCart } from '../Context/CartContext';
 
@@ -25,7 +25,6 @@ const ProductDetailModal = ({ product, onClose }) => {
         >
             <div className="bg-white w-full max-w-5xl rounded-3xl shadow-2xl relative flex flex-col md:flex-row overflow-hidden animate-in zoom-in-95 slide-in-from-bottom-5 duration-300 ring-1 ring-black/5">
                 
-                {/* Close Button (Floating) */}
                 <button    
                     onClick={onClose}
                     className="absolute top-4 right-4 z-20 p-2 bg-white/50 hover:bg-white rounded-full text-gray-500 hover:text-red-500 transition-all duration-200 backdrop-blur-sm"
@@ -33,7 +32,6 @@ const ProductDetailModal = ({ product, onClose }) => {
                     <X size={24} />
                 </button>
 
-                {/* Left: Image (Hero Style) */}
                 <div className="w-full md:w-1/2 bg-gray-50/80 p-8 flex flex-col items-center justify-center relative group">
                     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 mix-blend-multiply"></div>
                     <img 
@@ -42,7 +40,6 @@ const ProductDetailModal = ({ product, onClose }) => {
                         className="max-h-[300px] md:max-h-[450px] object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-105 z-10" 
                     />
                     
-                    {/* Tags */}
                     <div className="absolute top-6 left-6 flex flex-col gap-2 z-10">
                          {product.discountPercentage > 0 && (
                             <span className="bg-red-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg shadow-red-200 transform -rotate-2">
@@ -57,7 +54,6 @@ const ProductDetailModal = ({ product, onClose }) => {
                     </div>
                 </div>
 
-                {/* Right: Info */}
                 <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col bg-white">
                     <div className="mb-auto">
                         <span className="inline-block bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide mb-4">

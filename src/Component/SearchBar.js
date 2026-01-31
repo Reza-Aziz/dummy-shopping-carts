@@ -10,14 +10,11 @@ const SearchBar = ({ onSearch }) => {
     category: '', 
   });
   
-  // Note: Categories state removed as we don't display it in filter anymore as per request.
-  
   const [sort, setSort] = useState({ sortBy: '', order: '' });
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const dropdownRef = useRef(null);
   const buttonRef = useRef(null);
 
-  // Close Filter on Click Outside
   useEffect(() => {
       const handleClickOutside = (event) => {
           if (
@@ -35,7 +32,6 @@ const SearchBar = ({ onSearch }) => {
       return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isFilterOpen]);
 
-  // Debounce Logic
   useEffect(() => {
     const handler = setTimeout(() => {
       onSearch({ query, filters, sort });
@@ -63,10 +59,8 @@ const SearchBar = ({ onSearch }) => {
   return (
     <div className="relative w-full max-w-4xl mx-auto mb-10 z-40">
       
-      {/* Main Bar - Colorful & Glassy */}
       <div className="flex flex-col md:flex-row gap-3 items-stretch shadow-xl shadow-indigo-500/10 bg-white/70 backdrop-blur-xl border border-white/50 p-2 rounded-3xl ring-4 ring-white/30">
         
-        {/* Search Input */}
         <div className="flex-grow flex items-center bg-indigo-50/50 rounded-2xl px-5 border border-transparent focus-within:bg-white focus-within:border-indigo-300 focus-within:ring-4 focus-within:ring-indigo-100 transition-all duration-300">
             <Search className="text-indigo-400 mr-3" size={22} />
             <input
@@ -79,7 +73,6 @@ const SearchBar = ({ onSearch }) => {
         </div>
 
         <div className="flex items-center gap-2">
-             {/* Sort Dropdown */}
             <div className="relative hidden md:block h-full">
                  <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
                      <ArrowUpDown size={16} className="text-indigo-400" />
@@ -96,7 +89,6 @@ const SearchBar = ({ onSearch }) => {
                  <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-indigo-400 pointer-events-none" />
             </div>
 
-            {/* Filter Toggle */}
             <button
                 ref={buttonRef}
                 onClick={() => setIsFilterOpen(!isFilterOpen)}
@@ -112,13 +104,11 @@ const SearchBar = ({ onSearch }) => {
         </div>
       </div>
 
-      {/* Expanded Filter Panel - REMOVED CATEGORIES */}
       {isFilterOpen && (
         <div 
             ref={dropdownRef}
             className="absolute top-full mt-4 left-0 right-0 bg-white/80 backdrop-blur-3xl rounded-[2rem] shadow-2xl border border-white/60 p-6 md:p-8 animate-in fade-in slide-in-from-top-6 duration-300 ring-1 ring-black/5"
         >
-           {/* Only Price & Rules now, centered or grid-less simplified */}
            <div className="flex flex-col md:flex-row gap-8">
                
                <div className="flex-1 space-y-4">

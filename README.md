@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# Dump Online Shop
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simplified, premium, and modern shopping cart application built with React, Tailwind CSS, and Context API. This project demonstrates a clean UI/UX with essential e-commerce features using the DummyJSON API.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+- **Product Catalog**: Browse products with beautiful card layouts and smooth animations.
+- **Search & Filtering**: Real-time product search with debounce, price range filtering, and custom discount filters.
+- **Sorting**: Sort products by price (low/high) or alphabetically.
+- **Product Details**: Premium modal view for product details with "Add to Cart" functionality.
+- **Shopping Cart**: Fully functional cart with persistent storage (localStorage), quantity adjustment, and removal.
+- **Checkout**: Simulated checkout process with clear visual feedback.
+- **Responsive Design**: Fully responsive layout optimized for mobile and desktop.
+- **Modern UI**: Glassmorphism effects, vibrant gradients, and premium typography (Plus Jakarta Sans).
 
-### `npm start`
+## 🛠️ Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend Library**: React.js
+- **Styling**: Tailwind CSS
+- **State Management**: React Context API
+- **API Client**: Axios
+- **Icons**: Lucide React
+- **Routing**: React Router DOM
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📂 Project Structure
 
-### `npm test`
+```
+src/
+├── Api/
+│   └── Dummy.js            # API service functions for DummyJSON
+├── Component/
+│   ├── Header.js           # Navigation header
+│   ├── ProductDetailModal.js # Product info modal
+│   ├── ProductItem.js      # Individual product card component
+│   ├── ProductList.js      # Grid list of products with pagination
+│   └── SearchBar.js        # Search, Filter, and Sort component
+├── Context/
+│   └── CartContext.js      # Global state for Shopping Cart
+├── Pages/
+│   ├── Carts.js            # Shopping Cart page
+│   └── ShoppingCartsPages.js # Home/Landing page
+└── App.js                  # Main application entry with Routing
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## ⚡ Optimization Measures
 
-### `npm run build`
+- **Lazy Loading**: Route-based code splitting using `React.lazy` and `Suspense` ensures faster initial load times.
+- **React.memo**: Applied to list items (`ProductItem`) to prevent unnecessary re-renders during interactions.
+- **Debounced Search**: Search input utilizes debounce to minimize API calls during typing.
+- **Efficient State**: Localized state management where possible to reduce global re-renders.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🏃‍♂️ How to Run
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1.  **Clone the repository** (if applicable)
+2.  **Install Dependencies**:
+    ```bash
+    npm install
+    ```
+3.  **Start the Development Server**:
+    ```bash
+    npm start
+    ```
+4.  **Open in Browser**:
+    Visit `http://localhost:3000`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📝 License
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is for educational purposes.
